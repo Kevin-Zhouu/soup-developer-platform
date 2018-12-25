@@ -169,6 +169,10 @@ class Login extends Controller
 		
         return view('/login/signup');
     }
+	public function logout(){
+		Session::set('user','');
+		$this->success('登出成功', 'admin/login/index');
+	}
 	
 }
 

@@ -9,18 +9,19 @@ class Index extends Controller
 {
     public function index(Request $request)
     {
+		Role::viewPermission('app_view');
 		if($request->post('name')!=NULL){
 			$sql = Db::table('user')->insert([
-			'name'	=>	$request->post('name'),
-			'pass'	=>	md5($request->post('pass')),
-			'age'	=>	$request->post('age'),
+				'name'	=>	$request->post('name'),
+				'pass'	=>	md5($request->post('pass')),
+				'age'	=>	$request->post('age'),
 			]);
-
-			$res = Db::table('user')->select();
-			$this->assign('user',remove_xss($res));
-			dump(Session::get('user')->name);
-			return view();
 		}
+			$res = Db::table('user')->select();
+			$this->assign('user',$res);
+			//dump(Session::get('user')->name);
+			return view();
+		
     }
 	
 	public function newApp(){
