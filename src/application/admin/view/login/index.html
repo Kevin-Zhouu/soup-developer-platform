@@ -1,0 +1,63 @@
+{extend name="common/head"}
+{block name="body"}
+<style>
+	/*web background*/
+	.container{
+		display:table;
+		height:100%;
+	}
+
+	.row{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	/* centered columns styles */
+	.row-centered {
+		text-align:center;
+	}
+	.col-centered {
+		display:inline-block;
+		float:none;
+		text-align:left;
+		margin-right:-4px;
+		width:300px;
+		margin-top: 20%
+	}
+	body{
+		background-color: #EDEDED;
+		font-family:"微软雅黑"
+	}
+	.mx-auto{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+			
+</style>
+
+
+<div class="container">
+            <div class="row row-centered">
+                <div class="well col-md-6 col-centered shadow-sm p-3 mb-5 bg-white rounded" style="">
+					<form method="post" action="/index.php/admin/login/index">
+						<div class="mx-auto text-center" >
+						  <h4>登录</h4>
+						</div>
+					  <div class="form-group">
+						<input type="text" name="userName"class="form-control"  value="{$user_name}"placeholder="账号">
+					  </div>
+					  <div class="form-group">
+						<input type="text" name="passWord" class="form-control"  placeholder="密码">
+					  </div>
+						{switch name="status"}
+						{case value="0"}<div class="alert alert-danger" role="alert">{$error_msg}</div>{/case}
+						{/switch}
+						<div class="mx-auto text-center" >
+						  <button type="submit" class="btn btn-primary" style="width:100px">登录</button>
+							<button type="button" class="btn btn-success"onClick="window.location.href='/index.php/admin/login/signup'">注册</button>
+						</div>
+						  
+					</form>
+				</div>
+			</div>
+</div>
+{/block}
