@@ -1,0 +1,41 @@
+{extend name="common/template"}
+{block name="leftnav-1"}active{/block}
+{block name="content"}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">pass</th>
+      <th scope="col">age</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    
+	  {volist name="user" id="user"}
+		<tr>
+		  <th scope="row">{$user.id}</th>
+		  <td>{$user.name}</td>
+		  <td>{$user.pass}</td>
+		  <td>{$user.age}</td>
+		</tr>
+	  {/volist}
+  </tbody>
+</table>
+<form action="/index.php/index/index/index" name="user" method="post">
+  <div class="form-row">
+    <div class="col">
+      <input type="text" name="name" class="form-control" placeholder="name">
+    </div>
+    <div class="col">
+      <input type="text" name="pass"  class="form-control" placeholder="pass">
+    </div>
+	  <div class="col">
+      <input type="text" name="age" class="form-control" placeholder="age">
+    </div>
+  </div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{/block}

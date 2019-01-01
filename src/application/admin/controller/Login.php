@@ -42,7 +42,7 @@ class Login extends Controller
 				if($res){
 					Session::set('user',$res);
 					Session::set('isLoggedIn',true);
-					$this->success('登录成功', 'admin/index/index');
+					$this->success('登录成功，正在跳转', 'admin/manage/index');
 				}else{
 					$this->assign([
 						'user'=>$user->name,
@@ -127,7 +127,7 @@ class Login extends Controller
 					$res=User::insert($user->toArray());
 				//dump($res);
 					if($res){
-						$this->success('注册成功！', 'admin/login/index');
+						$this->success('注册成功！请登录', 'admin/login/index');
 					}else{
 						$this->assign([
 							'user'=>$user->name,
@@ -169,10 +169,7 @@ class Login extends Controller
 		
         return view('/login/signup');
     }
-	public function logout(){
-		Session::set('user','');
-		$this->success('登出成功', 'admin/login/index');
-	}
+	
 	
 }
 

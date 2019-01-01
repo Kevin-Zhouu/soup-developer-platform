@@ -3,46 +3,46 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="__CSS__/bootstrap.min.css" >
+<link rel="stylesheet" href="__CSS__/system.css" >
 <script src="__JS__/jquery-3.3.1.slim.min.js"> </script>
 <script src="__JS__/popper.min.js"> </script>
 <script src="__JS__/bootstrap.min.js"> </script>
 </head>
 
-<body style="height:100%">
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3  bg-white rounded"> <a class="navbar-brand" href="#">Navbar</a>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm  soup-topnav "> 
+	<a class="navbar-brand soup-nav-whiteColor" href="#">大汤易语言平台</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-  <div class="collapse navbar-collapse " id="navbarSupportedContent" >
+  <div class="collapse navbar-collapse soup-navcontent" id="navbarSupportedContent" >
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-      <li class="nav-item"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a> </div>
-      </li>
-      <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a> </div>
-      </li>
-      <li class="nav-item"> <a class="nav-link disabled" href="#">Disabled</a> </li>
+      <li class="nav-item active"> <a class="nav-link soup-nav-subtitle" href="#">首页 <span class="sr-only">(current)</span></a> </li>
+      <li class="nav-item active"> <a class="nav-link soup-nav-subtitle" href="#">特点 <span class="sr-only">(current)</span></a> </li>
+      <li class="nav-item active"> <a class="nav-link soup-nav-subtitle" href="#">优势 <span class="sr-only">(current)</span></a> </li>
+		<li class="nav-item active"> <a class="nav-link soup-nav-subtitle" href="#">下载 <span class="sr-only">(current)</span></a> </li>
+      
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <div class="form-inline my-2 my-lg-0">
+	  {block name="topnav_login"}
+		{switch name="login_status"}
+			{case value="1"}
+				<img width='30px' src="static/img/avatar_user.png"/>
+				<a class="nav-link soup-nav-subtitle" >您好,{$user_name}</a>
+				<button class="btn btn-outline-primary rounded-0" onClick="window.location.href='/index.php/admin/manage/index'" >管理控制台</button>
+			{/case}
+			{case value="0"}
+				<button class="btn btn-primary my-2 my-sm-0"  onClick="window.location.href='/index.php/admin/login/index'">登录</button>
+				  <span style="margin-left: 5px"></span>
+				  <button class="btn btn-outline-success my-2 my-sm-0" onClick="window.location.href='/index.php/admin/login/signup'">注册</button>
+			{/case}
+		{/switch}
+		  
+	  {/block}
+    </div>
   </div>
-</nav>
-<div style="padding-right: 50px;padding-left: 20px;padding-top:10px;width:250px; background-color: #F7F7F7;display: inline-block;height: 100%;position: absolute">
-  <ul class="nav flex-column nav nav-pills">
-    <li class="nav-item"> <a class="nav-link active" href="#">Active</a> </li>
-    <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li>
-    <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li>
-    <li class="nav-item"> <a class="nav-link disabled" href="#">Disabled</a> </li>
-  </ul>
-</div>
-<div style="display: inline-block;margin-left: 270px;margin-top:10px"> {block name="content"}
-  <button type="button" class="btn btn-primary">Primary</button>
-  {/block} </div>
+</nav>{block name="content"}
+  {/block}
 </body>
 </html>

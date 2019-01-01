@@ -1,4 +1,5 @@
 {extend name="common/head"}
+
 {block name="body"}
 <style>
 	/*web background*/
@@ -21,7 +22,7 @@
 		text-align:left;
 		margin-right:-4px;
 		width:300px;
-		margin-top: 20%
+		margin-top: 15%
 	}
 	body{
 		background-color: #EDEDED;
@@ -37,9 +38,13 @@
 
 <div class="container">
             <div class="row row-centered">
+				
                 <div class="well col-md-6 col-centered shadow-sm p-3 mb-5 bg-white rounded" style="">
+					<button type="submit" class="btn btn-secondary rounded-circle" style="position: absolute;top:-20px;" onClick="window.location.href='/index.php'"><i class="fas fa-arrow-left"></i></button>
 					<form method="post" action="/index.php/admin/login/index">
 						<div class="mx-auto text-center" >
+							
+						  
 						  <h4>登录</h4>
 						</div>
 					  <div class="form-group">
@@ -52,8 +57,8 @@
 						{case value="0"}<div class="alert alert-danger" role="alert">{$error_msg}</div>{/case}
 						{/switch}
 						<div class="mx-auto text-center" >
-						  <button type="submit" class="btn btn-primary" style="width:100px">登录</button>
-							<button type="button" class="btn btn-success"onClick="window.location.href='/index.php/admin/login/signup'">注册</button>
+						  <button type="submit" class="btn btn-primary " style="width:100px">登录</button>
+						  <button type="button" class="btn btn-success"onClick="window.location.href='signup'">注册</button>
 						</div>
 						  
 					</form>

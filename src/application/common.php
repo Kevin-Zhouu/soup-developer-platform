@@ -9,3 +9,9 @@
 // | Author: 流年 <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 include('../extend/accessRole.php');
+include('../extend/api/Apps.php');
+
+function get_rand_str($len){
+    $str = "1234567890asdfghjklqwertyuiopzxcvbnmASDFGHJKLZXCVBNMPOIUYTREWQ";
+    return substr(str_shuffle($str),0,$len);
+}

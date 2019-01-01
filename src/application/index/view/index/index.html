@@ -1,40 +1,19 @@
 {extend name="common/template"}
+
 {block name="content"}
+<div class="soup-frame shadow-lg bg-black">
+	<div class="soup-background ">
+		<div class="soup-background2 "></div>
+		<div class="soup-topcontent center-block">
+			<div class="soup-topcontent1 wow fadeInUp animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: fadeInRight;">
+				<h1>大汤易语言平台</h1>
+				<p>易用，快捷，安全</p>
+				<button class="btn btn-primary my-2 my-sm-0" >立即使用</button>
+				<button class="btn btn-outline-danger my-2 my-sm-0" >查看文档</button>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">name</th>
-      <th scope="col">pass</th>
-      <th scope="col">age</th>
-    </tr>
-  </thead>
-  <tbody>
+			</div>
+		</div>
+	</div>
+</div>
 
-    
-	  {volist name="user" id="user"}
-		<tr>
-		  <th scope="row">{$user.id}</th>
-		  <td>{$user.name}</td>
-		  <td>{$user.pass}</td>
-		  <td>{$user.age}</td>
-		</tr>
-	  {/volist}
-  </tbody>
-</table>
-<form action="/index.php/index/index/index" name="user" method="post">
-  <div class="form-row">
-    <div class="col">
-      <input type="text" name="name" class="form-control" placeholder="name">
-    </div>
-    <div class="col">
-      <input type="text" name="pass"  class="form-control" placeholder="pass">
-    </div>
-	  <div class="col">
-      <input type="text" name="age" class="form-control" placeholder="age">
-    </div>
-  </div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
 {/block}
