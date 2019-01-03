@@ -1,30 +1,35 @@
 {extend name="common/template"}
-{block name="leftnav-2"}active{/block}
+{block name="leftnav-create"}active{/block}
 {block name="content"}
-
-<h5 class="soup-el-pgtitle">新建应用</h5>
-<hr style="margin-top:0px">
-<form class="soup-el-pgcontent" method="post" action="newApp">
-  <div class="form-group">
-    <label>应用名称*</label>
-    <input type="input" class="form-control" name="appName" value="{$name}"placeholder="请输入应用名称（必填）">
-  </div>
-  <div class="form-group">
-	<label>应用简介</label>
-    <textarea class="form-control"  rows="5" name="appDescription" placeholder="请输入应用简介">{$description}</textarea>
-  </div>
- <div class="form-group">
-    <label>应用版本*</label>
-    <input type="input" class="form-control" name="appVersion" value="{$version}" placeholder="请输入应用版本（必填）">
-  </div>
- <div class="form-group">
-	<label>验证码*</label><br>
-	 <img src="{:captcha_src()}" alt="captcha" style="margin-bottom: 5px"/>
-	<input type="text" name="validateCode" class="form-control"  placeholder="验证码（必填）">
-  </div>
-	{switch name="status"}
-		{case value="0"}<div class="alert alert-danger" role="alert">{$error_msg}</div>{/case}
-	{/switch}
-  <button type="submit" class="btn btn-primary">提交</button>
-</form>
+<div class="soup-bodycontent ">
+	<div class="row">
+		<div class="soup-bodyBlock col shadow-sm bg-white">
+			<h5 class="soup-el-pgtitle">新建应用</h5>
+			<hr style="margin-top:0px">
+			<form class="soup-el-pgcontent" method="post" action="newApp">
+			  <div class="form-group">
+				<label>应用名称*</label>
+				<input type="input" class="form-control" name="appName" value="{$name}"placeholder="请输入应用名称（必填）">
+			  </div>
+			  <div class="form-group">
+				<label>应用简介</label>
+				<textarea class="form-control"  rows="5" name="appDescription" placeholder="请输入应用简介">{$description}</textarea>
+			  </div>
+			 <div class="form-group">
+				<label>应用版本*</label>
+				<input type="input" class="form-control" name="appVersion" value="{$version}" placeholder="请输入应用版本（必填）">
+			  </div>
+			 <div class="form-group">
+				<label>验证码*</label><br>
+				 <img src="{:captcha_src()}" alt="captcha" style="margin-bottom: 5px"/>
+				<input type="text" name="validateCode" class="form-control"  placeholder="验证码（必填）">
+			  </div>
+				{switch name="status"}
+					{case value="0"}<div class="alert alert-danger" role="alert">{$error_msg}</div>{/case}
+				{/switch}
+			  <button type="submit" class="btn btn-primary">提交</button>
+			</form>
+		</div>
+	</div>
+</div>
 {/block}

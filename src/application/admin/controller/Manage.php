@@ -12,17 +12,17 @@ class Manage extends Controller
     public function index(Request $request)
     {
 		Role::viewPermission('app_view');
-		if($request->post('name')!=NULL){
-			$sql = Db::table('user')->insert([
-				'name'	=>	$request->post('name'),
-				'pass'	=>	md5($request->post('pass')),
-				'age'	=>	$request->post('age'),
-			]);
-		}
-			$res = Db::table('user')->select();
-			$this->assign('user',$res);
-			//dump(Session::get('user')->name);
-			return view();
+		
+		$app_original_res = Apps::where(['owner'=>Session::get('user')->name])->select();
+		$app_res=[];
+		 foreach($app_original_res as $val){
+            $app_res[]=$val->toArray();
+        }
+		$this->assign([
+			'app_total'=>count($app_res),
+			'app_res'=>$app_res,
+		]);
+		return view();
 		
     }
 	
@@ -79,6 +79,7 @@ class Manage extends Controller
 		$this->assign($app_info);
 		return view();
 	}
+	
 	public function logout(){
 		Role::checkPermission(@Session::get('user')=="");
 		Session::set('user','');
