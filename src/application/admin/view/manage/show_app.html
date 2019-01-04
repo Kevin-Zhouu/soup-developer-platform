@@ -1,0 +1,168 @@
+{extend name="common/template"}
+{block name="leftnav-manage"}active{/block}
+{block name="content"}
+<div class="soup-bodycontent ">
+	<div class="row">
+		<div class="col-12 soup-col-padding" >
+			<div class="soup-bodyBlock shadow-sm bg-white" style="min-height: 270px;">
+				<h5 class="soup-el-pgtitle-sm">应用信息</h5>
+				<hr style="margin-top:0px">
+				<div class="row">
+					<div class="soup-detail-applogo">
+						<img class="rounded"src="/static/img/back/app.png" style="height:170px;width:170px;border-radius: 2rem!important;">
+					</div>
+					<div class="soup-detail">
+						<div class="soup-detail-top-row">
+							<span class="soup-detail-top-colum" style="width: 50px"></span>
+							<span class="soup-detail-top-colum" style="width: auto"></span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">应用id</a>
+							</span>
+							<span>
+								1
+							</span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">应用名称</a>
+							</span>
+							<span>
+								<span>大汤应用市场</span>
+							</span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">最新版本</a>
+							</span>
+							<span>
+								<span>Beta1.12</span>
+							</span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">应用简介</a>
+							</span>
+							<span>
+								<span>社会主义（socialism）是一种社会学思想，主张整个社会应作为整体，由社会拥有和控制产品、资本、土地、资产等，其管理和分配基于公众利益。19世纪30至40年代，“社会主义”的概念在西欧广为流传，发展出不同分支。马克思和恩格斯对社会主义发展出了他们的理论体系，亦认为社会主义社会是资本主义社会. </span>
+							</span>
+						</div>
+						
+					</div>	
+					<div class="soup-detail-appfunction">
+						<button type="button" class="btn btn-primary "><i class="fas fa-pencil-alt fa-sm"></i>  修改信息</button><br>
+						<button type="button" class="btn btn-success "><i class="fas fa-plus fa-sm"></i>  发布更新</button><br>
+						<button type="button" class="btn btn-danger "><i class="fas fa-times fa-sm"></i>  删除应用</button><br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-8 soup-col-padding" >
+				<div class="soup-bodyBlock shadow-sm bg-white soup-col-index-2ndline">
+					<h5 class="soup-el-pgtitle-sm">使用统计</h5>
+					<hr style="margin-top:0px">
+					<div class="row">
+						<div class="col-12" style="max-width: 700px;padding-left: 5%;text-align:center;">
+							<center>
+								<canvas id="myChart"  style="display: block;width: 300px !important;height: 140px !impoertant;"></canvas>
+							</center>
+						</div>
+					</div>
+				</div>
+		</div>
+		<div class="col-12 col-md-4 soup-col-padding" >
+			<div class="row">
+				<div class="col-12" style="padding-left: 0px;padding-right: 0px;" >
+					<div class="soup-bodyBlock shadow-sm bg-white soup-col-index-2ndline">
+						<h5 class="soup-el-pgtitle-sm">其他数据</h5>
+						<hr style="margin-top:0px">
+						<div class="row">
+							<div class="col-12" style="width:100px;padding-left: 0">
+								<div class="soup-applist">
+									<div class="soup-applist-top-row" hidden>
+										<span class="soup-applist-top-colum" style="width: 20%"></span>
+										<span class="soup-applist-top-colum" style="width: 80%"></span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a class="soup-appname" href="">今日访问</a>
+										</span>
+										<span>12</span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a class="soup-appname" href="">七日访问</a>
+										</span>
+										<span>30</span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a class="soup-appname" href="">此月访问</a>
+										</span>
+										<span>60</span>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="soup-detail-appfunction_info">
+						<button type="button" class="btn btn-primary "><i class="fas fa-key fa-sm"></i>  生成app_key</button><br>
+					</div>
+					</div>
+					
+				</div>
+<!--
+				<div class="col-12" style="padding-left: 0px;padding-right: 0px;">
+					<div class="soup-bodyBlock shadow-sm bg-white">
+						<h5 class="soup-el-pgtitle-sm">其他功能</h5>
+						<hr style="margin-top:0px">
+						<div class="row">
+							<div class="col-12" style="width:100px;height: 120px;padding-left: 0">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+-->
+				
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['12-1', '12-2', '12-3', "昨天", "今天"],
+        datasets: [{
+            label: '访问次数',
+            data: [0, 0, 4, 3, 10],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+            ],
+        }]
+    },
+    options: {
+		 title: {
+            display: false,
+            text: '访问统计'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        },
+		
+    }
+});
+Chart.defaults.global.defaultFontFamily = '微软雅黑';
+Chart.defaults.line.spanGaps = true;
+</script>
+{/block}

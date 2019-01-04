@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 include('../extend/accessRole.php');
 include('../extend/api/Apps.php');
-
+include('../extend/api/soup.php');
 function get_rand_str($len){
     $str = "1234567890asdfghjklqwertyuiopzxcvbnmASDFGHJKLZXCVBNMPOIUYTREWQ";
     return substr(str_shuffle($str),0,$len);

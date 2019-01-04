@@ -1,7 +1,7 @@
 {extend name="common/template"}
 {block name="leftnav-index"}active{/block}
 {block name="content"}
-
+<script src="__JS__/soup/index.js"> </script>
 <div class="soup-bodycontent ">
 	<div class="row">
 		<div class="col-12 soup-col-padding">
@@ -21,7 +21,7 @@
 						<div class="alert alert-success" role="alert">
 						  <center>
 							  <p>昨日访问</p>
-							  <h3>90</h3>
+							  <h3>{$app_analysis_data['-1day']}</h3>
 							</center>
 						</div>
 					</div>
@@ -98,10 +98,10 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["12-30", "12-31", "1-1", "昨天", "今天"],
+        labels: ['{$app_analysis_date_data['-4day']}', '{$app_analysis_date_data['-3day']}', '{$app_analysis_date_data['-2day']}', "昨天", "今天"],
         datasets: [{
             label: '访问次数',
-            data: [0, 0, 0, 0, 6, 0],
+            data: [{$app_analysis_data['-4day']}, {$app_analysis_data['-3day']}, {$app_analysis_data['-2day']}, {$app_analysis_data['-1day']}, {$app_analysis_data['today']}],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
             ],
