@@ -9,6 +9,10 @@ use \api\model\Apps;
 use \api\model\App_analysis;
 use \api\helper\soup;
 use \think\Validate;
+use \think\config;
+use OSS\Core\OssException;
+use OSS\OssClient;
+use think\Image;
 class Manage extends Controller
 {
     public function index(Request $request)
@@ -114,6 +118,7 @@ class Manage extends Controller
 		$this->success('登出成功', 'admin/login/index');
 	}
 	public function manageApp(){
+		Role::viewPermission('app_view');
 		$app_original_res = Apps::where(['owner'=>Session::get('user')->name])->select();
 		$app_res=[];
 		 foreach($app_original_res as $val){
@@ -125,9 +130,83 @@ class Manage extends Controller
 		return view();
 	}
 	public function showApp(){
+		Role::viewPermission('app_view');
 		$app_id=input('get.id');
+		if($app_id!=NULL){
+			$app_detail=Apps::get([
+				'id'=>$app_id,
+				'owner'=>Session::get('user')->name
+			])->toArray();
+			if($app_detail!=null){
+				//Analysis data
+				$app_analysis_data=[
+					'today'=>0,
+					'-1day'=>0,
+					'-2day'=>0,
+					'-3day'=>0,
+					'-4day'=>0,
+					'week'=>0,
+					'month'=>0
+				];
+				$app_analysis_date_data=[
+					'today'=>date('m-d'),
+					'-1day'=>soup::date('-1day','m-d'),
+					'-2day'=>soup::date('-2day','m-d'),
+					'-3day'=>soup::date('-3day','m-d'),
+					'-4day'=>soup::date('-4day','m-d'),
+					'-5day'=>soup::date('-5day','m-d'),
+					'-6day'=>soup::date('-6day','m-d'),
+				];
+
+				$app_analysis=App_analysis::getAnalysis($app_id,'use');
+				if(@$app_analysis[soup::date('-0day')]['data']==null)@$app_analysis[soup::date('-0day')]['data']=0;
+				$app_analysis_data['today'] = 
+					$app_analysis_data['week'] =
+					$app_analysis_data['month'] =
+					@$app_analysis[soup::date('today')]['data'];
+				
+				for($i=1;$i<31;$i++){
+					$app_analysis_data['month'] = @$app_analysis[soup::date('-'.$i.'day')]['data'] + $app_analysis_data['month'];
+				}
+				for($i=1;$i<7;$i++){
+					if(@$app_analysis[soup::date('-'.$i.'day')]['data']==null)@$app_analysis[soup::date('-'.$i.'day')]['data']=0;
+					$app_analysis_data['-'.$i.'day'] = @$app_analysis[soup::date('-'.$i.'day')]['data'];
+					$app_analysis_data['week'] = @$app_analysis[soup::date('-'.$i.'day')]['data'] + $app_analysis_data['week'];
+				}
+				//dump($app_analysis);
+				//app detail
+				$this->assign([
+					'app_detail'=>$app_detail,
+					'app_analysis_data'=>$app_analysis_data,
+					'app_analysis_date_data'=>$app_analysis_date_data
+				]);
+
+				return view();
+			}else{
+				$this->error('应用不存在！');
+			}
+		}else{
+			$this->error('请输入id！');
+		}
+	}
+	public function upload(){
 		return view();
 	}
+	public function uploadFile(Request $request)
+    {
+		$file = request()->file('file');
+        $file = $file->getInfo();  //获取到上传的文件\
+        // 尝试执行
+            //实例化对象 将配置传入
+//            $ossClient = new OssClient(config::get('KeyId'), config::get('KeySecret'), config::get('Endpoint'));
+//            //这里是有sha1加密 生成文件名 之后连接上后缀
+              //$fileName = $file->getInfo();
+//            //执行阿里云上传
+//            $result = $ossClient->uploadFile(config::get('Bucket'), 'apps/'.$fileName, $file->getInfo()['tmp_name']);
+            dump(UCloud_MultipartForm('soup',$file['tmp_name'].'.jpg', $file['tmp_name']));
+		 global $UCLOUD_PROXY_SUFFIX;
+		dump($UCLOUD_PROXY_SUFFIX);
+    }
 	protected function _initialize(){
 //		Role::test('2333');
 //		if(Session::get('isLoggedIn')!=true){

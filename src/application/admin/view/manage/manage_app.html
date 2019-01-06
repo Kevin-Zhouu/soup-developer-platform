@@ -29,7 +29,7 @@
 						{volist name="app_res" id="app"}
 						<div class="soup-applist-content">
 							<span>
-								<a class="soup-appname" href="">{$app.appname}</a>
+								<a class="soup-appname" href="showApp?id={$app.id}">{$app.appname}</a>
 								<span class="soup-subtitle">{if condition="$app.description == null"}暂无介绍{else /}{$app.description}{/if}</span>
 							</span>
 							<span>

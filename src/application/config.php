@@ -238,4 +238,10 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+	'KeyId'      => 'LTAImTSTKtgD6yh7',  //Access Key ID
+    'KeySecret'  => 'iwEpxhyspsVRZJCqlQTOvB5tm6rXoR',  //Access Key Secret
+    'Endpoint'   => 'oss-cn-shenzhen.aliyuncs.com',  //阿里云oss 外网地址endpoint
+    'Bucket'     => 'soup-app',  //Bucket名称
+	'publicKey'		 =>  '257da7b3-ea3c-48f9-bcd0-2b522cd24ca1'
+	
 ];
