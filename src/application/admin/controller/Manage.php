@@ -195,6 +195,8 @@ class Manage extends Controller
 	public function uploadFile(Request $request)
     {
 		$file = request()->file('file');
+		$info = $file->validate(['size'=>15678,'ext'=>'exe,rar,zip,apk,7z']);
+		
         $file = $file->getInfo();  //获取到上传的文件\
         // 尝试执行
             //实例化对象 将配置传入
@@ -203,7 +205,10 @@ class Manage extends Controller
               //$fileName = $file->getInfo();
 //            //执行阿里云上传
 //            $result = $ossClient->uploadFile(config::get('Bucket'), 'apps/'.$fileName, $file->getInfo()['tmp_name']);
-            dump(UCloud_MultipartForm('soup',$file['tmp_name'].'.jpg', $file['tmp_name']));
+		if($info){
+			dump(UCloud_MultipartForm('soup','app/'.$file['name'], $file['tmp_name']));
+		}
+            
 		 global $UCLOUD_PROXY_SUFFIX;
 		dump($UCLOUD_PROXY_SUFFIX);
     }
