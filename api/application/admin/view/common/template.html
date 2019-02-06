@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="__CSS__/bootstrap.min.css" >
+<link rel="stylesheet" href="__CSS__/system2.css" >
+<link rel="stylesheet" href="__CSS__/system.css" >
+<link rel="stylesheet" href="__CSS__/fontawesome.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="__JS__/jquery-3.3.1.slim.min.js"> </script>
+<script src="/static/js/layer/layer.js"></script>
+<script src="__JS__/popper.min.js"> </script>
+<script src="__JS__/bootstrap.min.js"> </script>
+<script src="__JS__/wow.min.js"></script>
+<script src="__JS__/chart/Chart.bundle.js"></script>
+ <script>
+         new WOW(
+            ).init();
+	 
+ </script>
+
+<link href="__CSS__/bootstrap-responsive.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="height:100%">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm "> 
+	<a class="navbar-brand soup-nav-whiteColor" href="#">大汤易语言管理后台</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  <div class="collapse navbar-collapse soup-navcontent" id="navbarSupportedContent" >
+    <ul class="navbar-nav mr-auto">
+     
+      
+    </ul>
+    <div class=" my-2 my-lg-0"style="margin-right: 10%;">
+      
+      <button class="btn btn-primary my-2 my-sm-0" onClick="window.location.href='/index.php'">返回前台</button>
+		<button class="btn btn-outline-danger my-2 my-sm-0" onClick="window.location.href='logout'">登出</button>
+    </div>
+  </div>
+</nav>
+	<div class="soup-content">
+	<div class="soup-leftnav">
+	  <ul class="nav flex-column nav nav-pills">
+		<li class="nav-item"> <a class="nav-link soup-nav-link {block name='leftnav-index'}{/block}" href="index">首页</a> </li>
+		<li class="nav-item"> <a class="nav-link soup-nav-link {block name='leftnav-manage'}{/block}" href="manageApp">应用管理</a> </li>
+		<li class="nav-item"> <a class="nav-link soup-nav-link {block name='leftnav-create'}{/block}" href="newApp">新建应用</a> </li>
+		<li class="nav-item"> <a class="nav-link soup-nav-link {block name='leftnav-update'}{/block}" href="#">发布新版本</a> </li>
+		<li class="nav-item"> <a class="nav-link soup-nav-link {block name='leftnav-account'}{/block}" href="#">我的账号</a> </li>
+	  </ul>
+	</div>
+
+	{block name="content"}
+	 {/block}
+	
+</div>
+</body>
+</html>

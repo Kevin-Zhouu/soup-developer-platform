@@ -1,7 +1,7 @@
 {extend name="common/template"}
 
 {block name="content"}
-<div class="soup-frame shadow-lg bg-black">
+<div id="top" class="soup-frame shadow-lg bg-black">
 	<div class="soup-background ">
 		<div class="soup-background2 "></div>
 		<div class="soup-topcontent center-block">
@@ -15,19 +15,19 @@
 		</div>
 	</div>
 </div>
-<div class="container" style="z-index: 1;">
+<div id="feature"class="container" style="z-index: 1;">
 	<div class="row">
 		<div class="col-12 col-md-3 soup-index-feature-col" style="background-image: url(static/img/front/website_icon_prob_1.png); ">
 			<p class="title">易使用</p>
-			<p class="text">极简单的调用方式，小白也会用, 并且永久免费！</p>
+			<p class="text">极简单的调用方式，小白也会用</p>
 		</div>
 		<div class="col-12 col-md-3 soup-index-feature-col" style="background-image: url(static/img/front/website_icon_prob_2.png); ">
-			<p class="title">稳定</p>
-			<p class="text">我们采用高配置的服务器确保您的服务稳定运行</p>
+			<p class="title">免费</p>
+			<p class="text">我们免费就是为了帮助很多不会网络技术的朋友，让他们的程序也能跟主流APP一样功能齐全</p>
 		</div>
 		<div class="col-12 col-md-3 soup-index-feature-col" style="background-image: url(static/img/front/website_icon_prob_3.png); ">
 			<p class="title">全语言支持</p>
-			<p class="text">我们不只支持易语言！还支持C,Java,Python,C#等支持网络访问的语言！</p>
+			<p class="text">我们不只支持易语言！还支持C,Java,Python,C#等</p>
 		</div>
 		<div class="col-12 col-md-3 soup-index-feature-col" style="background-image: url(static/img/front/website_icon_prob_4.png); ">
 			<p class="title">安全</p>
@@ -35,15 +35,62 @@
 		</div>
 	</div>
 </div>
-<div class="soup-index-info-1">
-	<div class="container" style="z-index: 1;">
+<div  id="function" class="soup-index-info-1">
+	<div class="container" style="z-index: 1;max-width: 1200px;padding-top:60px;padding-bottom: 60px;">
 		<div class="row">
-			<div class="col-12 col-md-5 soup-index-easy">
+			<div class="col-12 col-md-2 soup-index-easy" >
+			</div>
+			<div class="col-12 col-md-4 soup-index-easy">
 				<img class="soup-autoimg" src="static/img/front/showApp.png">
 			</div>
-			<div class="col-12 col-md-7 soup-index-easy" style="padding-left: 70px;">
-				<p class="title">功能超多</p>
-				<p class="text">超级简单的使用方式，超级全的功能,<br>包含自动更新，使用统计，应用管理等</p>
+			<div class="col-12 col-md-6 soup-index-easy" style="padding-left: 100px;">
+				<p class="title">访问统计</p>
+				<p class="text">详细的访问统计，多少人使用全知道！</p>
+				<button class="btn btn-primary my-2 my-sm-0" >立即使用</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="soup-index-info-2">
+	<div class="container" style="z-index: 1;max-width: 1200px;padding-top:60px;padding-bottom: 60px;">
+		<div class="row">
+			<div class="col-12 col-md-2 soup-index-easy" >
+			</div>
+			<div class="col-12 col-md-4 soup-index-easy" style="padding-left: 100px;">
+				<p class="title">自动更新</p>
+				<p class="text">完整的自动更新服务，只需在后台上传新版本即可推送到每个应用！</p>
+				<button class="btn btn-success my-2 my-sm-0" >立即使用</button>
+			</div>
+			<div class="col-12 col-md-6 soup-index-easy">
+				<img class="soup-autoimg" style="max-width: 400px"src="static/img/front/updateApp.png">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="soup-index-info-1">
+	<div class="container" style="z-index: 1;max-width: 1200px;padding-top:60px;padding-bottom: 60px;">
+		<div class="row">
+			<div class="col-12 col-md-2 soup-index-easy" >
+			</div>
+			<div class="col-12 col-md-4 soup-index-easy">
+				<img class="soup-autoimg" src="static/img/front/cdn.png">
+			</div>
+			<div class="col-12 col-md-6 soup-index-easy" style="padding-left: 100px;">
+				<p class="title">CDN加速</p>
+				<p class="text">免费提供全球CDN加速</p>
+				<button class="btn btn-primary my-2 my-sm-0" >立即使用</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="soup-index-info-2">
+	<div class="container" style="z-index: 1;max-width: 1200px;padding-top:40px;padding-bottom: 40px;">
+		<div class="row">
+			<div class="col-12 col-md-2 soup-index-easy" >
+			</div>
+			<div class="col-12 col-md-6 soup-index-easy" style="padding-left: 100px;">
+				<p class="title">还有更多功能正在开发...</p>
+				<p class="text">欢迎给我们提建议哦~我的QQ:2279688462</p>
 			</div>
 		</div>
 	</div>

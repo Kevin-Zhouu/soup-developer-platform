@@ -1,0 +1,180 @@
+{extend name="common/template"}
+{block name="leftnav-manage"}active{/block}
+{block name="content"}
+<div class="soup-bodycontent " style="max-width: 1000px;">
+	<div class="row">
+		<div class="col-12 soup-col-padding" >
+			<div class="soup-bodyBlock shadow-sm bg-white" style="min-height: 270px;">
+				<h5 class="soup-el-pgtitle-sm">应用信息</h5>
+				<hr style="margin-top:0px">
+				<div class="row">
+					<div class="soup-detail-applogo">
+						<img class="rounded"src="/static/img/back/app.png" style="height:170px;width:170px;border-radius: 2rem!important;">
+					</div>
+					<div class="soup-detail">
+						<div class="soup-detail-top-row">
+							<span class="soup-detail-top-colum" style="width: 50px"></span>
+							<span class="soup-detail-top-colum" style="width: auto"></span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">应用id</a>
+							</span>
+							<span>
+								{$app_detail['id']}
+							</span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">应用名称</a>
+							</span>
+							<span>
+								<span>{$app_detail['appname']}</span>
+							</span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">最新版本</a>
+							</span>
+							<span>
+								<span>{$app_detail['version']}</span>
+							</span>
+						</div>
+						<div class="soup-detail-content">
+							<span>
+								<a class="soup-appname" href="">应用简介</a>
+							</span>
+							<span>
+								<span style="min-height: 60px;">{if condition="$app_detail['description'] == null"}暂无介绍{else /}{$app_detail['description']}{/if}</span>
+							</span>
+						</div>
+						
+					</div>	
+					<div class="soup-detail-appfunction">
+						<button type="button" class="btn btn-primary "><i class="fas fa-pencil-alt fa-sm"></i>  修改信息</button><br>
+						<button type="button" class="btn btn-success "><i class="fas fa-plus fa-sm"></i>  发布更新</button><br>
+						<button type="button" class="btn btn-danger "><i class="fas fa-times fa-sm"></i>  删除应用</button><br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-8 soup-col-padding" >
+				<div class="soup-bodyBlock shadow-sm bg-white soup-col-index-2ndline">
+					<h5 class="soup-el-pgtitle-sm">使用统计</h5>
+					<hr style="margin-top:0px">
+					<div class="row">
+						<div class="col-12" style="max-width: 700px;padding-bottom: 10px;text-align:center;">
+							<center>
+								<canvas id="myChart"  style="display: block;width: 300px !important;height: 140px !impoertant;"></canvas>
+							</center>
+						</div>
+					</div>
+				</div>
+		</div>
+		<div class="col-12 col-md-4 soup-col-padding" >
+			<div class="row">
+				<div class="col-12" style="padding-left: 0px;padding-right: 0px;" >
+					<div class="soup-bodyBlock shadow-sm bg-white soup-col-index-2ndline">
+						<h5 class="soup-el-pgtitle-sm">其他数据</h5>
+						
+						
+						<hr style="margin-top:0px">
+						<div class="row">
+							<div class="col-12" style="width:100px;padding-left: 0">
+								<div class="soup-applist">
+									<div class="soup-applist-top-row" hidden>
+										<span class="soup-applist-top-colum" style="width: 20%"></span>
+										<span class="soup-applist-top-colum" style="width: 80%"></span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a class="soup-appname" href="">今日访问</a>
+										</span>
+										<span>{$app_analysis_data['today']}</span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a class="soup-appname" href="">七日访问</a>
+										</span>
+										<span>{$app_analysis_data['week']}</span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a style="margin-left: 70px;margin-top: 4px;font-size: 10px;color:#9E9E9E;position: absolute">从当月1日开始</a>
+											<a class="soup-appname" href="">此月访问</a>
+										</span>
+										<span>{$app_analysis_data['month']}</span>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+						<div class="soup-detail-appfunction_info">
+							<button type="button" class="btn btn-primary " 
+									onClick="layer.confirm('{$app_detail['appkey']}',
+											 {
+											 title:'应用Key',
+											 btn:['如何使用？','确定']
+											 })"><i class="fas fa-key fa-sm"></i>  获取app_key</button><br>
+						</div>
+					</div>
+					
+				</div>
+<!--
+				<div class="col-12" style="padding-left: 0px;padding-right: 0px;">
+					<div class="soup-bodyBlock shadow-sm bg-white">
+						<h5 class="soup-el-pgtitle-sm">其他功能</h5>
+						<hr style="margin-top:0px">
+						<div class="row">
+							<div class="col-12" style="width:100px;height: 120px;padding-left: 0">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+-->
+				
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['{$app_analysis_date_data['-6day']}','{$app_analysis_date_data['-5day']}','{$app_analysis_date_data['-4day']}', '{$app_analysis_date_data['-3day']}', '{$app_analysis_date_data['-2day']}', "昨天", "今天"],
+        datasets: [{
+            label: '访问次数',
+            data: [{$app_analysis_data['-6day']},{$app_analysis_data['-5day']},{$app_analysis_data['-4day']}, {$app_analysis_data['-3day']}, {$app_analysis_data['-2day']}, {$app_analysis_data['-1day']}, {$app_analysis_data['today']}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+            ],
+        }]
+    },
+    options: {
+		 title: {
+            display: false,
+            text: '访问统计'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+					allowDecimals: false,
+					suggestedMax: 10
+					
+                },
+            }]
+        },
+		
+    }
+});
+Chart.defaults.global.defaultFontFamily = '微软雅黑';
+Chart.defaults.line.spanGaps = true;
+</script>
+{/block}

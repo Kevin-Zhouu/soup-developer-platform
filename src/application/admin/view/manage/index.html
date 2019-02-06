@@ -20,8 +20,8 @@
 					<div class="col-sm">
 						<div class="alert alert-success" role="alert">
 						  <center>
-							  <p>昨日访问</p>
-							  <h3>{$app_analysis_data['-1day']}</h3>
+							  <p>今日访问</p>
+							  <h3>{$app_analysis_data['today']}</h3>
 							</center>
 						</div>
 					</div>
@@ -42,8 +42,8 @@
 			<div class="soup-bodyBlock shadow-sm bg-white soup-col-index-2ndline">
 				<h5 class="soup-el-pgtitle-sm">我的应用</h5>
 				<hr style="margin-top:0px">
-				<button type="button" class="btn btn-primary">新建应用</button>
-				<button type="button" class="btn btn-outline-success">管理应用</button>
+				<button type="button" onClick="window.location.href='newApp'" class="btn btn-primary">新建应用</button>
+				<button type="button" onClick="window.location.href='manageApp'" class="btn btn-outline-success">管理应用</button>
 				<div class="soup-app-containter">
 					
 					<div class="soup-applist">
@@ -56,7 +56,7 @@
 						{volist name="app_res" id="app"}
 						<div class="soup-applist-content">
 							<span>
-								<a class="soup-appname" href="">{$app.appname}</a>
+								<a class="soup-appname" href="showApp?id={$app.id}">{$app.appname}</a>
 								<span class="soup-subtitle">{if condition="$app.description == null"}暂无介绍{else /}{$app.description}{/if}</span>
 							</span>
 							<span>
@@ -85,8 +85,31 @@
 				<h5 class="soup-el-pgtitle-sm">访问统计</h5>
 				<hr style="margin-top:0px">
 				<div class="row">
-					<div class="col-12" style="width:100px;height: 200px;">
-						<canvas id="myChart"  ></canvas>
+					<div class="col-12" style="width:100px;max-height: 200px;">
+						<canvas id="myChart" style="position: relative" ></canvas>
+					</div>
+					
+					<div class="col-12">
+						<hr style="margin-top:0px;margin-bottom: 2px;">
+						
+					</div>
+					<div class="col-12" style="padding-left: 10px;padding-right: 10px;text-align: center">
+						
+						
+						<ul class="list-group list-group-flush">
+						  <li class="list-group-item d-flex justify-content-between align-items-center">
+							相比昨日
+							<span class="badge badge-success badge-pill">+10</span>
+						  </li>
+						  <li class="list-group-item d-flex justify-content-between align-items-center">
+							增长百分比
+							<span class="badge badge-danger badge-pill">-10%</span>
+						  </li>
+						  <li class="list-group-item d-flex justify-content-between align-items-center">
+							Morbi leo risus
+							<span class="badge badge-primary badge-pill">1</span>
+						  </li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -100,7 +123,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['{$app_analysis_date_data['-4day']}', '{$app_analysis_date_data['-3day']}', '{$app_analysis_date_data['-2day']}', "昨天", "今天"],
         datasets: [{
-            label: '访问次数',
+            label: '访问次数 (所有应用)',
             data: [{$app_analysis_data['-4day']}, {$app_analysis_data['-3day']}, {$app_analysis_data['-2day']}, {$app_analysis_data['-1day']}, {$app_analysis_data['today']}],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',

@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 include('../extend/accessRole.php');
 include('../extend/api/Apps.php');
+include('../extend/api/api/Response.php');
 include('../extend/api/soup.php');
 require_once("../extend/ucloud/proxy.php");
 require_once("../extend/ucloud/conf.php");
