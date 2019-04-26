@@ -97,17 +97,18 @@
 						
 						
 						<ul class="list-group list-group-flush">
+						 <li class="list-group-item d-flex justify-content-between align-items-center">
+							今日访问
+							<span class="badge badge-warning badge-pill">{$app_analysis_data['today']}</span>
+						  </li>
 						  <li class="list-group-item d-flex justify-content-between align-items-center">
 							相比昨日
-							<span class="badge badge-success badge-pill">+10</span>
+							<span class="badge badge-success badge-pill">{$app_statistic['compare_yesterday']}</span>
 						  </li>
+						  
 						  <li class="list-group-item d-flex justify-content-between align-items-center">
-							增长百分比
-							<span class="badge badge-danger badge-pill">-10%</span>
-						  </li>
-						  <li class="list-group-item d-flex justify-content-between align-items-center">
-							Morbi leo risus
-							<span class="badge badge-primary badge-pill">1</span>
+							今日用户(ip)
+							<span class="badge badge-primary badge-pill">{$app_ip_analysis_data['today']}</span>
 						  </li>
 						</ul>
 					</div>

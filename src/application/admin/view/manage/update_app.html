@@ -1,0 +1,57 @@
+{extend name="common/template"}
+{block name="leftnav-manage"}active{/block}
+{block name="content"}
+<div class="soup-bodycontent ">
+	<div class="row">
+		<div class="soup-bodyBlock soup-formBlock col shadow-sm bg-white">
+			<h5 class="soup-el-pgtitle">推送更新</h5>
+			<hr style="margin-top:0px">
+			<form class="soup-el-pgcontent" enctype="multipart/form-data" method="post" action="updateApp?id={$id}" onsubmit="return checkSize(104857600)">
+			  <div class="form-group">
+				<label>版本号*</label>
+				<input type="input" class="form-control" name="appVersion" value="{$version}"placeholder="请输入版本号（必填）">
+			  </div>
+			  <div class="form-group">
+				<label>更新内容*</label>
+				<textarea class="form-control"  rows="5" name="appDescription" placeholder="请输入更新内容">{$description}</textarea>
+			  </div>
+			 <div class="form-group">
+				<label>下载地址*<small id="emailHelp" class="form-text text-muted">请输入现有地址或使用我们提供的下载服务(二选一) <a href="#" class="badge badge-primary">?如何选择</a></small></label>
+				 <div class="input-group mb-10">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon3">Http:// </span>
+				  </div>
+					 <input type="input" class="form-control " style="padding-top: 5px;" name="appDownloadPath" value="{$download_path}" placeholder="请输入文件地址" >
+				</div>
+				
+				 <input type="hidden" name="MAX_FILE_SIZE" value="4194304">
+				 <div class="input-group mb-3" style="margin-top: 5px;">
+					 
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroupFileAddon01">上传文件</span>
+				  </div>
+				  <div class="custom-file">
+					<input type="file" class="custom-file-input" accept=".exe,.zip" id="file" name="file"  aria-describedby="inputGroupFileAddon01">
+					<label class="custom-file-label" for="inputGroupFile01">仅允许exe,zip，大小不超过100M</label>
+				  </div>
+				</div>
+				 
+			  </div>
+
+			 <div class="form-group">
+				<label>验证码*</label><br>
+				 <img src="{:captcha_src()}" alt="captcha" style="margin-bottom: 5px"/>
+				<input type="text" name="validateCode" class="form-control"  placeholder="验证码（必填）">
+			  </div>
+				{switch name="status"}
+					{case value="0"}<div class="alert alert-danger" role="alert">{$error_msg}</div>{/case}
+				{/switch}
+			  <button type="submit" class="btn btn-primary">提交</button>
+				
+				
+			</form>
+			<button id="submitBtn"onClick="submitClicked('#submitBtn')" class="btn btn-primary">提交</button>
+		</div>
+	</div>
+</div>
+{/block}

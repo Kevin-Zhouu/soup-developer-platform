@@ -96,6 +96,7 @@ class Login extends Controller
 			$confirmPass = md5(input('post.confirmPassWord'));
 			$user_info['age'] = $user->age = input('post.age');
 			$user_info['email'] = $user->email = input('post.email');
+			$user->role='visitor';
 			$validate_data=[
 				'用户名'	=>	$user->name,
 				'邮箱'	=>	$user->email,
@@ -124,10 +125,12 @@ class Login extends Controller
 					->whereOr(['email'=>$user->email])
 					->find();
 				if(!$isAlready){
+					$user->validate_code=get_rand_str(10);
 					$res=User::insert($user->toArray());
+					$email=sendemail($user->email, "大汤开发者平台", "<h1>您好，您在大汤开发者平台的激活链接是:<a href='http://bgp.46c46.com/index.php/admin/login/activate.html?code=".$user->validate_code."'>http://bgp.46c46.com/index.php/admin/login/activate.html?code=".$user->validate_code."</a></h1>");
 				//dump($res);
 					if($res){
-						$this->success('注册成功！请登录', 'admin/login/index');
+						$this->success('注册成功！请检查邮箱激活链接才能进入控制台。若没收到请检查垃圾邮件', 'admin/login/index');
 					}else{
 						$this->assign([
 							'user'=>$user->name,
@@ -170,7 +173,18 @@ class Login extends Controller
         return view('/login/signup');
     }
 	
-	
+	public function activate(){
+		@$code=input('get.code');
+		if($code!=NULL){
+			$isExist=User::where(['validate_code'=>$code])->find()['id'];
+			if($isExist!=NULL){
+				User::where(['validate_code'=>$code])->update(['role'=>'user']);
+				$this->success('激活成功！请登录', 'admin/login/index');
+			}else{
+				$this->error('激活失败！', 'admin/login/index');
+			}
+		}
+	}
 }
 
 ?>

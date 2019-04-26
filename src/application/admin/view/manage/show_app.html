@@ -51,8 +51,8 @@
 						
 					</div>	
 					<div class="soup-detail-appfunction">
-						<button type="button" class="btn btn-primary "><i class="fas fa-pencil-alt fa-sm"></i>  修改信息</button><br>
-						<button type="button" class="btn btn-success "><i class="fas fa-plus fa-sm"></i>  发布更新</button><br>
+						<button type="button" class="btn btn-primary " onClick="window.location.href='editApp?id={$app_detail['id']}'"><i class="fas fa-pencil-alt fa-sm"></i>  修改信息</button><br>
+						<button type="button" class="btn btn-success " onClick="window.location.href='updateApp?id={$app_detail['id']}'"><i class="fas fa-plus fa-sm"></i>  发布更新</button><br>
 						<button type="button" class="btn btn-danger "><i class="fas fa-times fa-sm"></i>  删除应用</button><br>
 					</div>
 				</div>
@@ -85,6 +85,12 @@
 									<div class="soup-applist-top-row" hidden>
 										<span class="soup-applist-top-colum" style="width: 20%"></span>
 										<span class="soup-applist-top-colum" style="width: 80%"></span>
+									</div>
+									<div class="soup-applist-content">
+										<span>
+											<a class="soup-appname" href="">今日用户(ip)</a>
+										</span>
+										<span>{$app_ip_analysis_data['today']}</span>
 									</div>
 									<div class="soup-applist-content">
 										<span>
@@ -143,6 +149,15 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['{$app_analysis_date_data['-6day']}','{$app_analysis_date_data['-5day']}','{$app_analysis_date_data['-4day']}', '{$app_analysis_date_data['-3day']}', '{$app_analysis_date_data['-2day']}', "昨天", "今天"],
         datasets: [{
+            label: '用户数量(ip)',
+            data: [{$app_ip_analysis_data['-6day']},{$app_ip_analysis_data['-5day']},{$app_ip_analysis_data['-4day']}, {$app_ip_analysis_data['-3day']}, {$app_ip_analysis_data['-2day']}, {$app_ip_analysis_data['-1day']}, {$app_ip_analysis_data['today']}],
+            backgroundColor: [
+                'rgba(242, 133, 115, 0.2)',
+            ],
+            borderColor: [
+                'rgba(242, 133, 115, 1)',
+            ],
+        },{
             label: '访问次数',
             data: [{$app_analysis_data['-6day']},{$app_analysis_data['-5day']},{$app_analysis_data['-4day']}, {$app_analysis_data['-3day']}, {$app_analysis_data['-2day']}, {$app_analysis_data['-1day']}, {$app_analysis_data['today']}],
             backgroundColor: [
@@ -151,7 +166,7 @@ var myChart = new Chart(ctx, {
             borderColor: [
                 'rgba(54, 162, 235, 1)',
             ],
-        }]
+        },],
     },
     options: {
 		 title: {

@@ -19,7 +19,7 @@ return [
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
-    'app_status'             => '',
+    'app_status'             => 'home',
     // 是否支持多模块
     'app_multi_module'       => true,
     // 入口自动绑定模块
@@ -238,4 +238,10 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+	'KeyId'      => 'LTAImTSTKtgD6yh7',  //Access Key ID
+    'KeySecret'  => 'iwEpxhyspsVRZJCqlQTOvB5tm6rXoR',  //Access Key Secret
+    'Endpoint'   => 'oss-cn-shenzhen.aliyuncs.com',  //阿里云oss 外网地址endpoint
+    'Bucket'     => 'soup-app',  //Bucket名称
+	'publicKey'		 =>  '257da7b3-ea3c-48f9-bcd0-2b522cd24ca1'
+	
 ];

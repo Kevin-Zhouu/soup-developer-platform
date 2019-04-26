@@ -10,22 +10,25 @@ use \api\model\Apps;
 use \api\model\App_analysis;
 use \api\helper\soup;
 use \api\Response;
-class Update extends Rest
+class Update extends Controller
 {
 	public function view(){
 		$app_key=input('get.app_key');
 		$validate_data=[
 					'app_key'	=>	$app_key,
 				];
-			$validate = new validate(
-				[
-					'app_key'	=>	'require',
-				]);
-			if($validate->check($validate_data)){
-				$status=App_analysis::updateView($app_key);
-				Response::returnMsg($validate->getError(),$status,'json');
-			}else{
-				Response::returnMsg($validate->getError(),400,'json');
-			}
+		$msg = [
+			'app_key.require' => 'App_key can not be null'
+		];
+		$validate = new validate(
+			[
+				'app_key'	=>	'require',
+			],$msg);
+		if($validate->check($validate_data)){
+			$status=App_analysis::updateView($app_key);
+			Response::returnMsg($status,$status,'text');
+		}else{
+			Response::returnMsg($validate->getError(),400,'text');
+		}
 	}
 }
