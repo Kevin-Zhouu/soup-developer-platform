@@ -1,5 +1,5 @@
 # soup-developer-platform
-An online platform for visualising and analysing the usage of softwares, made with PHP, ThinkPHP(a MVC framework), HTML, CSS, Redis and JavaScript 
+An online platform for visualising and analysing the usage of softwares, made with PHP, ThinkPHP(a MVC framework), HTML(Bootstrap), CSS, Redis and JavaScript 
 
 **Original post:** https://tieba.baidu.com/p/6100812533?pn=1   
 **Demonstration:** https://www.bilibili.com/video/BV1Nb411j7nw?from=search&seid=9786383113176152826&spm_id_from=333.337.0.0
