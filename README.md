@@ -2,7 +2,7 @@
 An analytical backend platform, enabling individual developers to track app usage
 
 ![49f311ce36d3d5398738b59b2d87e950352ab07e](https://user-images.githubusercontent.com/68810460/157803104-906047f1-178b-46a5-a7d0-3dd2df4e2a8c.png)<br>
-**Video Demo:** https://www.bilibili.com/video/BV1Nb411j7nw/?from=search&seid=9786383113176152826&spm_id_from=333.337.0.0&vd_source=935ac8e2222aa28727c2b46a9c5448c5
+**Video Demo(in Mandarin):** https://www.bilibili.com/video/BV1Nb411j7nw/?from=search&seid=9786383113176152826&spm_id_from=333.337.0.0&vd_source=935ac8e2222aa28727c2b46a9c5448c5
 ### Project Published: 2018 (during my Junior High School years) 👨‍🎓
 
 #### Built with ❤️ ✨
